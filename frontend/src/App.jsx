@@ -11,20 +11,23 @@ function App() {
   }, []);
 
   if (musicas.length === 0) {
-    return <p>Carregando...</p>;
+    return <p>Nenhuma música cadastrada</p>;
   }
 
   return (
     <div>
       <h1>Dados vindos do backend</h1>
-      <p>ID: {musicas[0].id}</p>
-      <p>Faixa: {musicas[0].musica}</p>
-      <p>Álbum: {musicas[0].album}</p>
-      <p>Artista: {musicas[0].artista}</p>
+
+      {musicas.map(musica => (
+        <div key={musica.id}>
+          <p>Nome: {musica.nome}</p>
+          <p>Álbum: {musica.album}</p>
+          <p>Artista: {musica.artista}</p>
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }
 
 export default App;
-
-
